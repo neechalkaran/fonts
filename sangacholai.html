@@ -1,0 +1,52 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="http://sangacholai.in/mystyles.css">
+  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+</head>
+<body>
+<table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>சொல்</th>
+                <th>பொருள்</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>சொல்</th>
+                <th>பொருள்</th>
+            </tr>
+        </tfoot>
+    </table>
+ 
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script>    
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        "ajax":"./data.json"
+    } );
+    $("div.toolbar").html('<b>Tamil Web directory</b>');
+} );
+   
+  </script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      // Load the Google Transliteration API
+      google.load("elements", "1", {packages: "transliteration"});
+      function onLoad() {
+        var options = {
+            sourceLanguage:google.elements.transliteration.LanguageCode.ENGLISH,
+            destinationLanguage: [google.elements.transliteration.LanguageCode.TAMIL],
+            shortcutKey: 'ctrl+g',
+            transliterationEnabled: true
+        };
+        var control = new google.elements.transliteration.TransliterationControl(options);
+
+        var element = document.getElementsByTagName('input');
+        // Enable transliteration in the editable DIV with id
+        control.makeTransliteratable(element);
+      }
+      google.setOnLoadCallback(onLoad);
+    </script>
+  </body>
+</html>
